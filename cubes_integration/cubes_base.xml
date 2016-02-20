@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	  <record model="ir.ui.view" id="olap_view">
+		<field name="name">olap.cubes.tree</field>
+		<field name="model">olap.cubes</field>
+		<field name="view_type">form</field>
+		<field name="arch" type="xml">
+  		  <form string="OLAP board" create="false" edit="false" version="7.0">
+			<field name="name" readonly="True"/>
+		  </form>
+		</field>
+		
+      </record>
+
+	  <record model="ir.actions.act_window" id="open_olap_board_action">
+		<field name="name">My OLAP cubes</field>
+		<field name="res_model">olap.cubes</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="usage">menu</field>
+        <field name="view_id" ref="olap_view"/>
+	  </record> 
+	  
+	  <menuitem
+		  id="menu_board_olap"
+		  action="open_olap_board_action"
+		  parent="base.menu_reporting_dashboard" 
+          groups="base.group_user" 
+          sequence="0"
+		  />
+    </data>
+</openerp>
